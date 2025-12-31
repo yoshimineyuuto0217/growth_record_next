@@ -1,0 +1,7 @@
+#本番環境用
+#デフォルトでこっちが呼ばれる(指定しない限り開発環境は呼ばれない)
+
+#本番環境をビルドするときは以下のコマンド
+#docker compose up --build
+#buildする際にdocker-compose.override.ymlをビルドしていたらdocker.compose.ymlに記載がなくてもdocker compose upでテスト環境側に見にいく！
+#本番環境の設定をしたらテスト環境の設定をしない限りdocker-compose.ymlが動く

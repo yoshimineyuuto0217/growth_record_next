@@ -1,0 +1,24 @@
+#テスト環境用
+#指定しない限りデフォでDockerfileが呼ばれる
+
+#テスト環境をビルドするときは以下のコマンド
+#docker compose -f docker-compose.override.yml up --build
+#次回の立ち上げ時
+#docker compose -f docker-compose.override.yml  up
+#コンテナを完全に閉じるコマンドは以下
+#docker compose -f docker-compose.override.yml down
+
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev # 開発環境用Dockerfile
+    env_file: #重要なものは.dockerignoreで管理してるからここでimportする必要がある
+      - .env.development
+    volumes:
+      - .:/app             # ホストのコードをマウント
+      - /app/node_modules  # node_modulesはコンテナ内専用
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    restart: unless-stopped
