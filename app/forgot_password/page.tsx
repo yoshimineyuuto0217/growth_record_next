@@ -7,12 +7,12 @@ const paga = () => {
     <div className="w-200 mx-auto flex flex-col justify-center items-center ">
       <HeadingText
         textClassname={`${HEADING_STYLES.small} mr-auto`}
-        text="新規登録"
+        text="パスワード再設定"
       />
       <FormBox
-        outsideclassname="w-full h-75 bg-[#FFFFFF] rounded-[5px] border-[#000000] border flex justify-center items-center"
-        buttonname="登録"
-        formclassname="h-65"
+        outsideclassname="w-full h-50 bg-[#FFFFFF] rounded-[5px] border-[#000000] border flex justify-center items-center"
+        buttonname="送信"
+        formclassname="h-35"
       />
     </div>
   );
