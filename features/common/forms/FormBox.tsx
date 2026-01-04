@@ -18,6 +18,14 @@ const FormBox = ({
   formclassname: string;
 }) => {
   const pathname = usePathname();
+  const [preview, setPreview] = useState<"text" | "password">("password");
+  const switchPreview = () => {
+    if (preview === "password") {
+      setPreview("text");
+    } else {
+      setPreview("password");
+    }
+  };
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -58,13 +66,16 @@ const FormBox = ({
           <Input
             outsideclassname={INPUTBOX_STYLES.middle}
             placeholder="パスワード"
+            isPasswordOpenFlag={true}
+            asType={preview}
             value={form.password}
-            onChange={(value: string) =>
+            isswitchPreview={switchPreview}
+            onChange={(value: string) => {
               setForm((prev) => ({
                 ...prev,
                 password: value,
-              }))
-            }
+              }));
+            }}
           />
         )}
         <Button
