@@ -12,7 +12,7 @@ const Header = () => {
     pathname === "/forgot_password";
 
   return (
-    <header className="w-full h-17.5 border-[#D1CFCF]  content-center bg-[#FEFEFE]">
+    <header className="w-full h-17.5 border-[#D1CFCF]  content-center bg-[#FEFEFE] sticky top-0">
       <div className="w-287.5 flex mx-auto justify-between ">
         <Logo />
         {!isButtonFlag && (
