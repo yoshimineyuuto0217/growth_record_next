@@ -9,31 +9,31 @@ const page = () => {
         title={"テスト投稿です"}
         tagname={["react", "php"]}
       />
-            <ArticleBox
+      <ArticleBox
         name={"吉嶺勇斗"}
         date={"2027年1月1日"}
         title={"テスト投稿です"}
         tagname={["react", "php"]}
       />
-            <ArticleBox
+      <ArticleBox
         name={"吉嶺勇斗"}
         date={"2027年1月1日"}
         title={"テスト投稿です"}
         tagname={["react", "php"]}
       />
-            <ArticleBox
+      <ArticleBox
         name={"吉嶺勇斗"}
         date={"2027年1月1日"}
         title={"テスト投稿です"}
         tagname={["react", "php"]}
       />
-            <ArticleBox
+      <ArticleBox
         name={"吉嶺勇斗"}
         date={"2027年1月1日"}
         title={"テスト投稿です"}
         tagname={["react", "php"]}
       />
-            <ArticleBox
+      <ArticleBox
         name={"吉嶺勇斗"}
         date={"2027年1月1日"}
         title={"テスト投稿です"}
