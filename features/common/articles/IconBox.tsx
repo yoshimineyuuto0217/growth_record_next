@@ -11,7 +11,9 @@ const IconBox = ({
 }) => {
   return (
     <div className={srcclassname}>
-      <Image src={src} alt={alt} width={0} height={0} />
+      <a href="/profile">
+        <Image src={src} alt={alt} width={100} height={100} />
+      </a>
     </div>
   );
 };
