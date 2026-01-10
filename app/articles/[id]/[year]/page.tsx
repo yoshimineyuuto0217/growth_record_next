@@ -1,7 +1,48 @@
+import ArticleBox from "@/features/common/articles/ArticleBox";
+
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div className="mx-auto content-center mt-5">
+      <ArticleBox
+        name={"吉嶺勇斗"}
+        date={"2027年1月1日"}
+        title={"テスト投稿です"}
+        tagname={["react", "php"]}
+        articleManage
+      />
+      <ArticleBox
+        name={"吉嶺勇斗"}
+        date={"2027年1月1日"}
+        title={"テスト投稿です"}
+        tagname={["react", "php"]}
+      />
+      <ArticleBox
+        name={"吉嶺勇斗"}
+        date={"2027年1月1日"}
+        title={"テスト投稿です"}
+        tagname={["react", "php"]}
+      />
+      <ArticleBox
+        name={"吉嶺勇斗"}
+        date={"2027年1月1日"}
+        title={"テスト投稿です"}
+        tagname={["react", "php"]}
+      />
+      <ArticleBox
+        name={"吉嶺勇斗"}
+        date={"2027年1月1日"}
+        title={"テスト投稿です"}
+        tagname={["react", "php"]}
+      />
+      <ArticleBox
+        name={"吉嶺勇斗"}
+        date={"2027年1月1日"}
+        title={"テスト投稿です"}
+        tagname={["react", "php"]}
+        articleManage
+      />
+    </div>
+  );
+};
 
-export default page
+export default page;
