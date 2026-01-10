@@ -30,7 +30,7 @@ const Button = ({
         </a>
       )}
       {as === "button" && (
-        <button type="submit" className="w-full h-full block content-center ">
+        <button type="submit" className="w-full h-full block content-center cursor-pointer">
           {buttoName}
         </button>
       )}
