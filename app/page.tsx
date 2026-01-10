@@ -6,12 +6,14 @@ export default function Home() {
         <Button
           buttoName="投稿をみる"
           buttonColor="bg-[#FFD1A3] rounded-[5px] w-200 h-12.5 text-black text-center content-center"
-          link="/main"
+          link="/articles"
+          as="a"
         />
         <Button
           buttoName="日記を書く"
           buttonColor=" bg-[#FEFEFE] border-[#FFD1A3] border-1 rounded-[5px] w-200 h-12.5 text-[#FFD1A3] text-center content-center"
           link="/login"
+          as="a"
         />
       </div>
   );
