@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/Button";
 import IconBox from "@/features/common/articles/IconBox";
 import { useState } from "react";
 
@@ -8,7 +9,7 @@ const Post = () => {
   const [tags, setTags] = useState<string[]>([]);
   return (
     <div className="w-200 rounded-[5px] mx-auto content-center">
-      <form action="" className="h-150 flex flex-col justify-between">
+      <form action="" className="h-160 flex flex-col justify-between">
         <input
           type="text"
           value={title}
@@ -36,6 +37,18 @@ const Post = () => {
               asType="button"
             />
           </div>
+        </div>
+        <div className="flex w-full justify-between">
+          <Button
+            buttoName="下書き保存"
+            buttonColor="border border-[#FFCD7C] text-[#FFCD7C] rounded-[5px] h-10 w-95 bg-white "
+            as="button"
+          />
+          <Button
+            buttoName="公開"
+            buttonColor="rounded-[5px] h-10 w-95 bg-[#FFCD7C]  "
+            as="button"
+          />
         </div>
       </form>
     </div>
