@@ -7,7 +7,7 @@ import { useState } from "react";
 const Post = () => {
   // テスト実行のためのコメント追加二回目
   const [title, setTitle] = useState("");
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<string>("");
   return (
     <div className="w-200 rounded-[5px] mx-auto content-center">
       <form action="" className="h-160 flex flex-col justify-between">
@@ -23,6 +23,7 @@ const Post = () => {
           className="border rounded-[5px] h-10 w-full p-3 bg-white"
           placeholder="タグをカンマ区切りで入力してください"
           value={tags}
+          onChange={(e) => setTags(e.target.value)}
         />
         <div className="relative">
           <textarea
