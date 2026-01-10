@@ -5,11 +5,13 @@ const IconBox = ({
   alt,
   srcclassname,
   asType = "a",
+  onClicklogic,
 }: {
   src: string;
   alt: string;
   srcclassname: string;
-  asType?: "a" | "button";
+  asType?: "a" | "button" | "default";
+  onClicklogic?: () => void;
 }) => {
   return (
     <div className={srcclassname}>
@@ -19,7 +21,22 @@ const IconBox = ({
         </a>
       )}
       {asType === "button" && (
-          <Image src={src} alt={alt} width={100} height={100} />
+        <Image
+          src={src}
+          alt={alt}
+          width={100}
+          height={100}
+          onClick={onClicklogic}
+        />
+      )}
+      {asType === "default" && (
+        <Image
+          src={src}
+          alt={alt}
+          width={100}
+          height={100}
+          onClick={onClicklogic}
+        />
       )}
     </div>
   );
