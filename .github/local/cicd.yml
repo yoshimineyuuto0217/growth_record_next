@@ -1,0 +1,31 @@
+name: CI (local act)
+
+on: [push]
+
+jobs:
+  ci:
+    #{{  ubuntの環境でCIを動かす  }}
+    runs-on: ubuntu-latest
+    #{{  ここでやりたいことを記載する  }}
+    steps:
+      #{{  githubのリポジトリにコピーして走らせる  }}
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      #{{  チェックさせたい項目を定義  }}
+      - name: Install package.json
+        run: npm ci
+      - name: Lint start
+        run: npm run lint
+      - name: build
+        run: npm run build
+  #{{  mainブランチに直マージを防ぐ  }}
+  block-main:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo " main ブランチへの直接 push は禁止です"
+          exit 1
