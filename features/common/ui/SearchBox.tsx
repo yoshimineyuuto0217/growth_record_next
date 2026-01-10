@@ -1,7 +1,6 @@
 import IconBox from "../articles/IconBox";
 
 const SearchBox = () => {
-  const test = console.log("CI/CDのテスト")
   return (
     <form
       action=""
