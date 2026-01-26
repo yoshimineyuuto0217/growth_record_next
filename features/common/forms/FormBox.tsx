@@ -5,8 +5,8 @@ import Input from "./Input";
 import { INPUTBOX_STYLES } from "@/constants/InputBox";
 import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
-
-// ここでURLみてinputの切り分けを行う
+import ErrorMessageBox from "../ui/ErrorMessageBox";
+import { useSubmitAuth } from "@/features/routes/forms/hooks/useSubmitAuth";
 
 const FormBox = ({
   outsideclassname,
@@ -19,6 +19,13 @@ const FormBox = ({
 }) => {
   const pathname = usePathname();
   const [preview, setPreview] = useState<"text" | "password">("password");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const { submitAuth, errorMessage } = useSubmitAuth(form,setForm);
+
   const switchPreview = () => {
     if (preview === "password") {
       setPreview("text");
@@ -26,16 +33,11 @@ const FormBox = ({
       setPreview("password");
     }
   };
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
 
   return (
     <div className={outsideclassname}>
       <form
-        action=""
+        action={submitAuth}
         className={`flex flex-col justify-between  ${formclassname}`}
       >
         {pathname === "/register" && (
@@ -51,6 +53,9 @@ const FormBox = ({
             }
           />
         )}
+        {errorMessage.name && (
+          <ErrorMessageBox errormessage={errorMessage.name} />
+        )}
         <Input
           outsideclassname={INPUTBOX_STYLES.middle}
           placeholder="メールアドレス"
@@ -62,6 +67,9 @@ const FormBox = ({
             }))
           }
         />
+        {errorMessage.email && (
+          <ErrorMessageBox errormessage={errorMessage.email} />
+        )}
         {(pathname === "/register" || pathname === "/login") && (
           <Input
             outsideclassname={INPUTBOX_STYLES.middle}
@@ -77,6 +85,9 @@ const FormBox = ({
               }));
             }}
           />
+        )}
+        {errorMessage.password && (
+          <ErrorMessageBox errormessage={errorMessage.password} />
         )}
         <Button
           as="button"
