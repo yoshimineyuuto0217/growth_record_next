@@ -11,4 +11,6 @@ export const setAuthCookie = async (token: string) => {
 };
 
 // Headerの表示切り分けで使用するtoken
-export const isAuth = (await cookies()).has("token");
+export const getIsAuth = async () => {
+  return (await cookies()).has("token");
+};

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { isAuth } from "@/lib/auth/cookies";
+import { getIsAuth } from "@/lib/auth/cookies";
 
 export const metadata: Metadata = {
   title: "学習記録アプリ",
@@ -19,7 +19,7 @@ export default function RootLayout({
       <body
         className={`antialiased text-black min-h-screen flex flex-col `}
       >
-        <Header auth={isAuth} />
+        <Header auth={getIsAuth} />
         <main className="grow flex mb-[5%]">{children}</main>
         <Footer />
       </body>
