@@ -24,15 +24,11 @@ export const createRegisterInfo = async ({
       name,
     }),
   });
-
   const data = await res.json();
-  await setAuthCookie(data.token);
-
-
   if (!res.ok) {
     throw data;
   }
-
+  await setAuthCookie(data.token);
   return data;
 };
 
@@ -54,13 +50,10 @@ export const readLogin = async ({
       password,
     }),
   });
-
   const data = await res.json();
-  await setAuthCookie(data.token);
-
   if (!res.ok) {
     throw data;
   }
-
+  await setAuthCookie(data.token);
   return data;
 };
