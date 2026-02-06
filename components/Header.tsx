@@ -18,9 +18,10 @@ const Header = ({ auth }: { auth: boolean }) => {
   };
   const router = useRouter();
   const logout = async () => {
+    await handleLogout();
+    router.refresh();
     router.push("login");
     handleToggleManageBox();
-    await handleLogout();
   };
   return (
     <header className="w-full h-17.5 border-[#D1CFCF]  content-center bg-[#FEFEFE] sticky top-0 z-20">
