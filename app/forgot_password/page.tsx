@@ -1,5 +1,6 @@
 import HeadingText from "@/components/HeadingText";
 import { HEADING_STYLES } from "@/constants/FontConstant";
+import { COMMON_STYLES } from "@/constants/StyleCss";
 import FormBox from "@/features/common/forms/FormBox";
 
 const paga = () => {
@@ -10,7 +11,7 @@ const paga = () => {
         text="パスワード再設定"
       />
       <FormBox
-        outsideclassname="w-full h-50 bg-[#FFFFFF] rounded-[5px] border-[#000000] border flex justify-center items-center"
+        outsideclassname={COMMON_STYLES.form_style}
         buttonname="送信"
         formclassname="h-35"
       />
