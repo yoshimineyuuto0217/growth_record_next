@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { cookies } from "next/headers";
+import { isAuth } from "@/lib/auth/cookies";
 
 export const metadata: Metadata = {
   title: "学習記録アプリ",
   description: "学習記録を付けるためのアプリです",
 };
-
-// tokenの付与
-const isAuth = (await cookies()).has("token");
 
 export default function RootLayout({
   children,

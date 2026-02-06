@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+// ログイン・新規登録の時に使用するtoken
 export const setAuthCookie = async (token: string) => {
   (await cookies()).set("token", token, {
     httpOnly: true,
@@ -8,3 +9,6 @@ export const setAuthCookie = async (token: string) => {
     path: "/",
   });
 };
+
+// Headerの表示切り分けで使用するtoken
+export const isAuth = (await cookies()).has("token");
