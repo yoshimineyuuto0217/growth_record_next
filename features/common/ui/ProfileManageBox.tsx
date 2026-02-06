@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import LogicButton from "./LogicButton";
+import { COMMON_STYLES } from "@/constants/StyleCss";
 
 const ProfileManageBox = ({
   name,
@@ -19,11 +20,15 @@ const ProfileManageBox = ({
       />
       <Button
         buttoName="プロフィールへ"
-        buttonColor="py-1"
+        buttonColor="py-1 "
         as="a"
         link="/profile"
       />
-      <LogicButton buttonname="ログアウト" buttonLogic={logout} />
+      <LogicButton
+        buttonname="ログアウト"
+        buttonLogic={logout}
+        buttonClassname={COMMON_STYLES.logic_button_style}
+      />
     </div>
   );
 };
