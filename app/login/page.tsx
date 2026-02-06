@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import HeadingText from "@/components/HeadingText";
 import { HEADING_STYLES } from "@/constants/FontConstant";
+import { COMMON_STYLES } from "@/constants/StyleCss";
 import FormBox from "@/features/common/forms/FormBox";
 
 const paga = () => {
@@ -10,17 +11,17 @@ const paga = () => {
         textClassname={`${HEADING_STYLES.small} mr-auto`}
         text="ログイン"
       />
-      <div className="h-100 w-full flex-col flex justify-between mt-5">
+      <div className={COMMON_STYLES.form_wrapper}>
         <FormBox
-          outsideclassname="w-full h-75 bg-[#FFFFFF] rounded-[5px] border-[#000000] border flex justify-center items-center"
+          outsideclassname={`${COMMON_STYLES.form_style} h-75`}
           buttonname="ログイン"
           formclassname="h-55"
         />
-        <div className="flex w-full h-12.5 justify-between">
+        <div className={COMMON_STYLES.flex_between_layout}>
           <Button
             buttoName="GitHubでログイン"
             isImageFlag
-            buttonColor="w-97.5 boreder-[#000000] rounded-[5px] border flex items-center relative "
+            buttonColor={COMMON_STYLES.auth_button}
             as="button"
             src="/github.svg"
             alt="GitHub"
@@ -28,7 +29,7 @@ const paga = () => {
           <Button
             buttoName="Googleでログイン"
             isImageFlag
-            buttonColor="w-97.5 boreder-[#000000] rounded-[5px] border flex items-center relative "
+            buttonColor={COMMON_STYLES.auth_button}
             as="button"
             src="/google.svg"
             alt="Google"
@@ -40,3 +41,4 @@ const paga = () => {
 };
 
 export default paga;
+

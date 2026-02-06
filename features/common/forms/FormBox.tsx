@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Input from "./Input";
-import { INPUTBOX_STYLES } from "@/constants/InputBox";
+import { INPUT_BOX_STYLES } from "@/constants/InputBox";
 import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
 import ErrorMessageBox from "../ui/ErrorMessageBox";
 import { useSubmitAuth } from "@/features/routes/forms/hooks/useSubmitAuth";
+import Link from "next/link";
+import { COMMON_STYLES } from "@/constants/StyleCss";
 
 const FormBox = ({
   outsideclassname,
@@ -24,7 +26,7 @@ const FormBox = ({
     email: "",
     password: "",
   });
-  const { submitAuth, errorMessage } = useSubmitAuth(form,setForm);
+  const { submitAuth, errorMessage } = useSubmitAuth(form, setForm);
 
   const switchPreview = () => {
     if (preview === "password") {
@@ -42,7 +44,7 @@ const FormBox = ({
       >
         {pathname === "/register" && (
           <Input
-            outsideclassname={INPUTBOX_STYLES.middle}
+            outsideclassname={INPUT_BOX_STYLES.middle}
             placeholder="ユーザー名"
             value={form.name}
             onChange={(value: string) =>
@@ -57,7 +59,7 @@ const FormBox = ({
           <ErrorMessageBox errormessage={errorMessage.name} />
         )}
         <Input
-          outsideclassname={INPUTBOX_STYLES.middle}
+          outsideclassname={INPUT_BOX_STYLES.middle}
           placeholder="メールアドレス"
           value={form.email}
           onChange={(value: string) =>
@@ -72,7 +74,7 @@ const FormBox = ({
         )}
         {(pathname === "/register" || pathname === "/login") && (
           <Input
-            outsideclassname={INPUTBOX_STYLES.middle}
+            outsideclassname={INPUT_BOX_STYLES.middle}
             placeholder="パスワード"
             isPasswordOpenFlag={true}
             asType={preview}
@@ -86,14 +88,30 @@ const FormBox = ({
             }}
           />
         )}
+        {pathname === "/login" && (
+          <Link href={"/forgot_password"}>
+            {" "}
+            <span className={COMMON_STYLES.form_span_color}>
+              パスワード忘れた場合
+            </span>
+          </Link>
+        )}
         {errorMessage.password && (
           <ErrorMessageBox errormessage={errorMessage.password} />
         )}
         <Button
           as="button"
           buttoName={buttonname}
-          buttonColor={` bg-[#FEFEFE] border-[#FFD1A3] text-[#FFD1A3] text-center content-center ${INPUTBOX_STYLES.middle}`}
+          buttonColor={`${COMMON_STYLES.bg_change_style} ${INPUT_BOX_STYLES.middle}`}
         />
+        {pathname === "/login" && (
+          <Link href={"/register"}>
+            {" "}
+            <span className={COMMON_STYLES.form_span_color}>
+              アカウントを持ってない場合は新規登録
+            </span>
+          </Link>
+        )}
       </form>
     </div>
   );
