@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Input from "./Input";
-import { INPUTBOX_STYLES } from "@/constants/InputBox";
+import { INPUT_BOX_STYLES } from "@/constants/InputBox";
 import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
 import ErrorMessageBox from "../ui/ErrorMessageBox";
@@ -44,7 +44,7 @@ const FormBox = ({
       >
         {pathname === "/register" && (
           <Input
-            outsideclassname={INPUTBOX_STYLES.middle}
+            outsideclassname={INPUT_BOX_STYLES.middle}
             placeholder="ユーザー名"
             value={form.name}
             onChange={(value: string) =>
@@ -59,7 +59,7 @@ const FormBox = ({
           <ErrorMessageBox errormessage={errorMessage.name} />
         )}
         <Input
-          outsideclassname={INPUTBOX_STYLES.middle}
+          outsideclassname={INPUT_BOX_STYLES.middle}
           placeholder="メールアドレス"
           value={form.email}
           onChange={(value: string) =>
@@ -74,7 +74,7 @@ const FormBox = ({
         )}
         {(pathname === "/register" || pathname === "/login") && (
           <Input
-            outsideclassname={INPUTBOX_STYLES.middle}
+            outsideclassname={INPUT_BOX_STYLES.middle}
             placeholder="パスワード"
             isPasswordOpenFlag={true}
             asType={preview}
@@ -102,7 +102,7 @@ const FormBox = ({
         <Button
           as="button"
           buttoName={buttonname}
-          buttonColor={`font-mono text-[20px] bg-[#FEFEFE] border-[#FFD1A3] text-[#FFD1A3] text-center content-center hover:bg-[#FFD1A3] hover:text-white ${INPUTBOX_STYLES.middle}`}
+          buttonColor={`${COMMON_STYLES.bg_change_style} ${INPUT_BOX_STYLES.middle}`}
         />
         {pathname === "/login" && (
           <Link href={"/register"}>

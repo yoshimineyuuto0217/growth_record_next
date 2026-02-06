@@ -7,5 +7,6 @@ export const COMMON_STYLES = {
   form_wrapper: "h-100 w-full flex flex-col justify-between mt-5",
   flex_between_layout: "flex w-full h-12.5 justify-between",
   form_span_color:"border-b text-xs hover:text-sky-300",
-  logic_button_style:"py-1 cursor-pointer"
+  logic_button_style:"py-1 cursor-pointer",
+  bg_change_style:"font-mono text-[20px] bg-[#FEFEFE] border-[#FFD1A3] text-[#FFD1A3] text-center content-center hover:bg-[#FFD1A3] hover:text-white"
 };

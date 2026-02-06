@@ -8,8 +8,10 @@ import ProfileManageBox from "@/features/common/ui/ProfileManageBox";
 import SearchBox from "@/features/common/ui/SearchBox";
 import { useRouter } from "next/navigation";
 import { handleLogout } from "@/features/routes/ui/handleLogout";
+import { COMMON_STYLES } from "@/constants/StyleCss";
+import { INPUT_BOX_STYLES } from "@/constants/InputBox";
 
-const Header = ({auth}:{auth:boolean}) => {
+const Header = ({ auth }: { auth: boolean }) => {
   const [isProfileMangeBox, setProfileMangeBox] = useState<boolean>(false);
   const handleToggleManageBox = () => {
     setProfileMangeBox((prev: boolean) => !prev);
@@ -28,7 +30,7 @@ const Header = ({auth}:{auth:boolean}) => {
           <div className="flex w-77.5 justify-between">
             <Button
               buttoName="新規登録"
-              buttonColor=" bg-[#FEFEFE] border-[#FFD1A3] border-1 rounded-[5px] w-37.5 h-12.5 text-[#FFD1A3] text-center "
+              buttonColor={`${COMMON_STYLES.bg_change_style} ${INPUT_BOX_STYLES.small}`}
               link="/register"
               as="a"
             />
