@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
 import ErrorMessageBox from "../ui/ErrorMessageBox";
 import { useSubmitAuth } from "@/features/routes/forms/hooks/useSubmitAuth";
+import Link from "next/link";
+import { COMMON_STYLES } from "@/constants/StyleCss";
 
 const FormBox = ({
   outsideclassname,
@@ -24,7 +26,7 @@ const FormBox = ({
     email: "",
     password: "",
   });
-  const { submitAuth, errorMessage } = useSubmitAuth(form,setForm);
+  const { submitAuth, errorMessage } = useSubmitAuth(form, setForm);
 
   const switchPreview = () => {
     if (preview === "password") {
@@ -86,14 +88,30 @@ const FormBox = ({
             }}
           />
         )}
+        {pathname === "/login" && (
+          <Link href={"/forgot_password"}>
+            {" "}
+            <span className={COMMON_STYLES.form_span_color}>
+              パスワード忘れた場合
+            </span>
+          </Link>
+        )}
         {errorMessage.password && (
           <ErrorMessageBox errormessage={errorMessage.password} />
         )}
         <Button
           as="button"
           buttoName={buttonname}
-          buttonColor={` bg-[#FEFEFE] border-[#FFD1A3] text-[#FFD1A3] text-center content-center ${INPUTBOX_STYLES.middle}`}
+          buttonColor={`font-mono text-[20px] bg-[#FEFEFE] border-[#FFD1A3] text-[#FFD1A3] text-center content-center hover:bg-[#FFD1A3] hover:text-white ${INPUTBOX_STYLES.middle}`}
         />
+        {pathname === "/login" && (
+          <Link href={"/register"}>
+            {" "}
+            <span className={COMMON_STYLES.form_span_color}>
+              アカウントを持ってない場合は新規登録
+            </span>
+          </Link>
+        )}
       </form>
     </div>
   );

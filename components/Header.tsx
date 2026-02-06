@@ -6,12 +6,19 @@ import IconBox from "@/features/common/articles/IconBox";
 import { useState } from "react";
 import ProfileManageBox from "@/features/common/ui/ProfileManageBox";
 import SearchBox from "@/features/common/ui/SearchBox";
+import { useRouter } from "next/navigation";
+import { handleLogout } from "@/features/routes/ui/handleLogout";
 
-const Header = () => {
-  const auth = true;
+const Header = ({auth}:{auth:boolean}) => {
   const [isProfileMangeBox, setProfileMangeBox] = useState<boolean>(false);
   const handleToggleManageBox = () => {
     setProfileMangeBox((prev: boolean) => !prev);
+  };
+  const router = useRouter();
+  const logout = async () => {
+    router.push("login");
+    handleToggleManageBox();
+    await handleLogout();
   };
   return (
     <header className="w-full h-17.5 border-[#D1CFCF]  content-center bg-[#FEFEFE] sticky top-0 z-20">
@@ -42,7 +49,9 @@ const Header = () => {
               asType="default"
               onClicklogic={handleToggleManageBox}
             />
-            {isProfileMangeBox && <ProfileManageBox name="吉嶺勇斗" />}
+            {isProfileMangeBox && (
+              <ProfileManageBox name="吉嶺勇斗" logout={logout} />
+            )}
             <Button
               buttoName="投稿する"
               buttonColor="bg-[#FFD1A3] h-12.5 w-31.25 text-center rounded-[5px] "
