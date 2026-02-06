@@ -9,7 +9,7 @@ import SearchBox from "@/features/common/ui/SearchBox";
 import { useRouter } from "next/navigation";
 import { handleLogout } from "@/features/routes/ui/handleLogout";
 
-const Header = ({auth}:{auth:() => Promise<boolean>}) => {
+const Header = ({auth}:{auth:boolean}) => {
   const [isProfileMangeBox, setProfileMangeBox] = useState<boolean>(false);
   const handleToggleManageBox = () => {
     setProfileMangeBox((prev: boolean) => !prev);
