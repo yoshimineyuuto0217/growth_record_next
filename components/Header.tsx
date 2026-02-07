@@ -53,7 +53,7 @@ const Header = ({ auth }: { auth: boolean }) => {
               onClicklogic={handleToggleManageBox}
             />
             {isProfileMangeBox && (
-              <ProfileManageBox name="吉嶺勇斗" logout={logout} />
+              <ProfileManageBox  logout={logout} />
             )}
             <Button
               buttoName="投稿する"
