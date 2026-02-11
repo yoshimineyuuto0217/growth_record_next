@@ -1,7 +1,22 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "host.docker.internal",
+        port: "8080",
+        pathname: "/images/**",
+      },
+    ],
+    dangerouslyAllowLocalIP: true,
+  },
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",  
+    },
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
