@@ -4,7 +4,7 @@ import { LOCAL_ENDPOINT } from "@/constants/Config";
 import { getToken } from "@/lib/auth/cookies";
 import { revalidatePath } from "next/cache";
 
-// 自分のユーザー情報を取得する
+// 自分の情報を取得
 export const getCurrentUser = async () => {
   const token = await getToken();
   const res = await fetch(`${LOCAL_ENDPOINT}/me`, {
@@ -17,31 +17,46 @@ export const getCurrentUser = async () => {
   if (!res.ok) {
     throw await res.json();
   }
-
   return res.json();
 };
 
-// 自分のユーザー情報を更新する
+// 自分の情報を更新
 export const patchCurrentUser = async ({
   name,
-  profile_image,
   self_introduction,
 }: {
   name?: string;
-  profile_image?: File | null;
   self_introduction?: string;
 }) => {
   const token = await getToken();
-  const formData = new FormData();
-  if (name) formData.append("name", name ?? "");
-  if (self_introduction) {
-    formData.append("self_introduction", self_introduction ?? "");
-  }
-  if (profile_image) {
-    formData.append("profile_image", profile_image);
-  }
+  const body = {
+    ...(name !== undefined && { name }),
+    ...(self_introduction !== undefined && { self_introduction }),
+  };
+
   const res = await fetch(`${LOCAL_ENDPOINT}/me`, {
     method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    throw new Error("プロフィール更新に失敗しました");
+  }
+  revalidatePath("/", "layout");
+};
+
+// 自分の画像を更新
+export const createProfileCurrentUser = async (profileImage: File) => {
+  const token = await getToken();
+  const formData = new FormData();
+  formData.append("profileImage", profileImage);
+
+  const res = await fetch(`${LOCAL_ENDPOINT}/profile`, {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -49,8 +64,12 @@ export const patchCurrentUser = async ({
   });
 
   if (!res.ok) {
-    throw new Error("プロフィール更新に失敗しました");
+    throw new Error("プロフィール画像の更新に失敗しました");
   }
-  //ProfileManageBox.tsxで呼び出してるユーザー情報を更新する為のもの
+
+  const data = await res.json();
+
   revalidatePath("/", "layout");
+
+  return data;
 };
