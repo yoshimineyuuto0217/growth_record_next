@@ -10,8 +10,10 @@ import { useRouter } from "next/navigation";
 import { handleLogout } from "@/features/routes/ui/handleLogout";
 import { COMMON_STYLES } from "@/constants/StyleCss";
 import { INPUT_BOX_STYLES } from "@/constants/InputBox";
+import { useCurrentUser } from "@/app/providers";
 
 const Header = ({ auth }: { auth: boolean }) => {
+  const { currentUser } = useCurrentUser();
   const [isProfileMangeBox, setProfileMangeBox] = useState<boolean>(false);
   const handleToggleManageBox = () => {
     setProfileMangeBox((prev: boolean) => !prev);
@@ -46,9 +48,9 @@ const Header = ({ auth }: { auth: boolean }) => {
           <div className="flex relative w-140 justify-between">
             <SearchBox />
             <IconBox
-              src=""
+              src={currentUser?.profile_image || "/human.svg"}
               alt="プロフィール画像"
-              srcclassname="w-12.5 h-12.5 bg-red-300 rounded-[90px] cursor-pointer"
+              srcclassname="w-12.5 h-12.5 bg-red-300 rounded-[90px] cursor-pointer overflow-hidden"
               asType="default"
               onClicklogic={handleToggleManageBox}
             />
