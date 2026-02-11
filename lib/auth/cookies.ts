@@ -14,3 +14,9 @@ export const setAuthCookie = async (token: string) => {
 export const getIsAuth = async () => {
   return (await cookies()).has("token");
 };
+
+// API通信で使用する為のtoken情報
+export const getToken = async () => {
+  const cookieStore = await cookies();
+  return cookieStore.get("token")?.value;
+};
