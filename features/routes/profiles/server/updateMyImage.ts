@@ -1,7 +1,9 @@
+"use server"
+
 import { createProfileCurrentUser } from "@/api/userApi";
 
 // 自分のプロフィール画像を更新
-export const postMyImage = async (profileImage: File) => {
+export const updateMyImage = async (profileImage: File) => {
   try {
     const result = await createProfileCurrentUser(profileImage);
     return result;

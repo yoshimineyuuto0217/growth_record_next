@@ -7,10 +7,10 @@ import { useState } from "react";
 import ProfileManageBox from "@/features/common/ui/ProfileManageBox";
 import SearchBox from "@/features/common/ui/SearchBox";
 import { useRouter } from "next/navigation";
-import { handleLogout } from "@/features/routes/ui/handleLogout";
 import { COMMON_STYLES } from "@/constants/StyleCss";
 import { INPUT_BOX_STYLES } from "@/constants/InputBox";
 import { useCurrentUser } from "@/app/providers";
+import { userLogout } from "@/features/routes/forms/server/userLogout";
 
 const Header = ({ auth }: { auth: boolean }) => {
   const { currentUser } = useCurrentUser();
@@ -20,7 +20,7 @@ const Header = ({ auth }: { auth: boolean }) => {
   };
   const router = useRouter();
   const logout = async () => {
-    await handleLogout();
+    await userLogout();
     router.refresh();
     router.push("login");
     handleToggleManageBox();

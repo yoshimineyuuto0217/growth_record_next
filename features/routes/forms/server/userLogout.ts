@@ -2,6 +2,6 @@
 
 import { cookies } from "next/headers";
 
-export const handleLogout = async () => {
+export const userLogout = async () => {
     (await cookies()).set("token", "", { maxAge: 0, path: "/" });
 };

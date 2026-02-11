@@ -1,7 +1,7 @@
 "use server";
 
 import { readLogin } from "@/api/authApi";
-import { errorsMessage, registerType } from "@/types/fromType";
+import { errorsMessage, registerType } from "@/types/formType";
 
 export const userLogin = async ({
   password,

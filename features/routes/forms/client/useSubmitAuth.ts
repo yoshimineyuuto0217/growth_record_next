@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { userRegister } from "../server/userRegister";
-import { errorsMessage, FormState } from "@/types/fromType";
+import { errorsMessage, FormState } from "@/types/formType";
 import { userLogin } from "../server/userLogin";
 
 export const useSubmitAuth = (
@@ -13,7 +13,6 @@ export const useSubmitAuth = (
   const router = useRouter();
   const pathname = usePathname();
   const doubleTapRef = useRef(false);
-
   const [errorMessage, setErrorMessage] = useState<errorsMessage>({
     name: "",
     email: "",
