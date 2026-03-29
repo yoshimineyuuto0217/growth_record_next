@@ -61,6 +61,7 @@ const Header = ({ auth }: { auth: boolean }) => {
               buttoName="投稿する"
               buttonColor="bg-[#FFD1A3] h-12.5 w-31.25 text-center rounded-[5px] "
               as="a"
+              link="/articles/new"
             />
           </div>
         )}
