@@ -1,7 +1,7 @@
 "use server";
 
 import { createRegisterInfo } from "@/api/authApi";
-import { errorsMessage, registerType } from "@/types/fromType";
+import { errorsMessage, registerType } from "@/types/formType";
 
 export const userRegister = async ({
   password,

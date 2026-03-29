@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import IconBox from "../articles/IconBox";
 import { useCurrentUser } from "@/app/providers";
 import { updateMyProfile } from "@/features/routes/profiles/server/updateMyProfile";
-import { postMyImage } from "@/features/routes/profiles/server/postMyImage";
+import { updateMyImage } from "@/features/routes/profiles/server/updateMyImage";
 
 const ProfileBox = () => {
   const { currentUser } = useCurrentUser();
@@ -20,7 +20,7 @@ const ProfileBox = () => {
     const file = e.target.files?.[0];
     if (!file) return;
     setProfilePreview(URL.createObjectURL(file));
-    const result = await postMyImage(file);
+    const result = await updateMyImage(file);
     setProfilePreview(`${result.profile_image}?t=${Date.now()}`);
   };
 
@@ -52,7 +52,7 @@ const ProfileBox = () => {
         <div className="relative w-20 h-full rounded-full overflow-hidden">
         <IconBox
           alt={"プロフィール画像"}
-          src={profilePreview || "/human.svg"}
+          src={profilePreview}
           asType="button"
           srcclassname="bg-grey-400 border rounded-full w-20 h-20 overflow-hidden"
           onProfileChange={(e: ChangeEvent<HTMLInputElement>) => {

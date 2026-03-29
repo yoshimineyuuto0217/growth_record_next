@@ -6,7 +6,7 @@ import { INPUT_BOX_STYLES } from "@/constants/InputBox";
 import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
 import ErrorMessageBox from "../ui/ErrorMessageBox";
-import { useSubmitAuth } from "@/features/routes/forms/hooks/useSubmitAuth";
+import { useSubmitAuth } from "@/features/routes/forms/client/useSubmitAuth";
 import Link from "next/link";
 import { COMMON_STYLES } from "@/constants/StyleCss";
 

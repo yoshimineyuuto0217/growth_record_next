@@ -1,3 +1,5 @@
+"use server"
+
 import { patchCurrentUser } from "@/api/userApi";
 
 export const updateMyProfile = async ({
